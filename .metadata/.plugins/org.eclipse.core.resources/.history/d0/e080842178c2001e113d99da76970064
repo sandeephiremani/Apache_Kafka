@@ -1,0 +1,5 @@
+package com.enduser.ConsumerConfig;
+
+public class ConsumerKafka {
+
+}

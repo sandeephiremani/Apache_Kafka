@@ -1,0 +1,14 @@
+package com.enduser.ConsumerConfig;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.KafkaListener;
+
+@Configuration
+public class ConsumerKafka {
+
+	
+	@KafkaListener(topics ="",groupId = "")
+	public void UpdatedLoc(String value) {
+		
+	}
+}

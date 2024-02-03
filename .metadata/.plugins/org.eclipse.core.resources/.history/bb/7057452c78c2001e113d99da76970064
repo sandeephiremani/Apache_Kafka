@@ -1,0 +1,8 @@
+package com.enduser.Const;
+
+public class AppConst {
+
+	
+	public static String LOCATION_UPDTAE_NAME="";
+	public static String GROUP_ID="group-1";
+}
