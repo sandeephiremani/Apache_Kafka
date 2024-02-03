@@ -1,0 +1,34 @@
+#To start the Kafka we need to start with Zookeeoer
+>bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+#After staring the kafka need to start the server
+>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+#Creating the topic
+>bin\kafka-topics.bat --create --topic location-update-topic --bootstrap-server localhost:9092
+
+#Producing the topic 
+>bin\kafka-topics.bat --describe --topic location-update-topic --bootstrap-server localhost:9092
+
+
+#Consuming the created Topic
+.\bin\windows\kafka-console-consumer.bat --topic location-update-topic --from-beginning --bootstrap-server localhost:9092
+
+
+#Configuration in application.properties
+#DeliverBoy/Producer configuration
+
+server.port=8081
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+
+
+#EndUser/Consumer Configuration
+
+server.port=8082
+spring.kafka.consumer.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=group-1
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
